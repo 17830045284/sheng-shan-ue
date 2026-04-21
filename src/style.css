@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  color: white;
+}
+
+@font-face {
+  font-family: Regular;
+  src: url('./assets/font/WD-XLLubrifontJPN-Regular.otf');
+}
+
+@font-face {
+  font-family: SourceHanSansCNRegular;
+  src: url('./assets/font/SourceHanSansCN-Regular.otf');
+}
+
+@font-face {
+  font-family: DINPro;
+  src: url('./assets/font/D-DIN-PRO-700-Bold.otf');
+}
+
+.SourceHanSansCNRegular {
+  font-family: SourceHanSansCNRegular;
+}
+
+.Regular {
+  font-family: Regular;
+}
+
+.DINPro {
+  font-family: DINPro;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  padding-left: 20px;
+  width: 0.3rem;
+  background-color: rgba(220, 232, 255, 1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(69, 123, 223, 1);
+  border-radius: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.dg.ac {
+  z-index: 999 !important;
+}
+
+select,
+select * {
+  color: black;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.animate__zoomIn {
+  --animate-duration: 0.5s !important;
+}
+
+.yc {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.4s ease-in-out;
+}
+.bounce-leave-active {
+  animation: bounce-out 0.4s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes bounce-out {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active,
+.slide-fade-right-enter-active,
+.slide-fade-right-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+}
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+  transform: translateX(0);
+}
+
+.slide-fade-right-enter-to,
+.slide-fade-right-leave-from {
+  transform: translateX(0);
+}
+.slide-fade-right-enter-from,
+.slide-fade-right-leave-to {
+  transform: translateX(100%);
+}

@@ -1,0 +1,1 @@
+window._iframeBaseUrl = 'http://localhost:8223/#';
