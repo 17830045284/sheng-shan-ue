@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import { useStore } from '@/store';
 import { getImg } from '@/utils/assets'
+import { sendToUE } from '@/ktJS/UE'
 const store = useStore();
 const props = defineProps({});
 const data = [
@@ -27,7 +28,8 @@ const handleClick = (item) => {
         name: item.name,
     },
     }
-    ue4('ueEvent', ueOptions)
+    sendToUE('ueEvent', ueOptions)
+    // ue4('ueEvent', ueOptions)
 }
 </script>
 

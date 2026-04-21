@@ -273,6 +273,9 @@ async function initPixelStreaming(ssUrl: string, forceReload = false) {
   const stream = new PixelStreaming(config)
 
   // 双保险：收到 SDP 后主动接受 WebRTC offer
+  // ========== 添加自定义消息处理器 ==========
+  // 注册 TextboxEntry 消息处理器，消除警告
+  // 注意：PixelStreaming 库使用 addResponseEventListener 来注册消息处理器
   stream.addEventListener('webRtcSdpReady', () => {
     if (stream._webRtcController) {
       stream._webRtcController.acceptWebRTCOffer()

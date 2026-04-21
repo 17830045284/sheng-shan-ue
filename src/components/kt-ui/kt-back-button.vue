@@ -1,5 +1,6 @@
 <script setup>
 import { useStore } from "../../store";
+import { sendToUE } from '@/ktJS/UE'
 const store = useStore();
 import router from "@/router/index.js";
 function handleBack() {
@@ -9,7 +10,8 @@ function handleBack() {
       ...store.currentFeature,
     },
   }
-  ue4('ueEvent', ueOptions)
+  // ue4('ueEvent', ueOptions)
+  sendToUE('ueEvent', ueOptions)
   console.log('发出信息退出四预',ueOptions);
   // store.clearCurrentFeature()
   // store.setCollapsePanel(false)

@@ -1,6 +1,7 @@
 <script setup>
 import { useStore } from "@/store";
 import dayjs from "dayjs";
+import { sendToUE } from '@/ktJS/UE'
 const store = useStore();
 
 const initalData = computed(() => {
@@ -57,7 +58,8 @@ function handleAlarmClick(item) {
   store.setCollapsePanel(true);
   store.isShowFeatureButton = false;
   console.log("ueOptions: ", ueOptions);
-  ue4("ueEvent", ueOptions);
+  sendToUE('ueEvent', ueOptions)
+  // ue4("ueEvent", ueOptions);
 }
 onMounted(() => {
   // setTimeout(() => {
@@ -93,7 +95,7 @@ onMounted(() => {
       class="relative w-266 h-52 kt-bg-full bg-[url('@/assets/img/alarm_bg.webp')] cursor-pointer"
       @click="handleAlarmClick(item)"
     >
-    <p class="absolute top-30 px-15 flex justify-between w-full h-30 items-center">
+    <div class="absolute top-30 px-15 flex justify-between w-full h-30 items-center">
       <div class="h-36 scroll-text relative" :title="item.type">
           <p class="absolute text-[16px] span1"><span class="warn-value">{{item.type}}</span>
             {{item.time }}
@@ -102,7 +104,7 @@ onMounted(() => {
             {{item.time }}
           </p>
       </div>
-    </p>
+    </div>
   </li>
   </transition-group>
   </ul>

@@ -4,6 +4,7 @@ import { getImg } from "@/utils/assets";
 import router from "@/router/index.js";
 import { useStore } from "@/store";
 import { waterChangeLine } from "@/view-charts/Home";
+import { sendToUE } from '@/ktJS/UE'
 const store = useStore();
 let showWaterChange = ref(false);
 const data = ref([
@@ -40,7 +41,8 @@ const handleButtonClick = (index, curItemId) => {
         id: activeId.value + "级",
       },
     };
-    ue4("ueEvent", ueOptions);
+    // ue4("ueEvent", ueOptions);
+    sendToUE('ueEvent', ueOptions)
     showWaterChange.value = true;
   } else {
     // 查看预案
@@ -51,7 +53,8 @@ const handleButtonClick = (index, curItemId) => {
         name: "预案",
       },
     };
-    ue4("ueEvent", ueOptions);
+    // ue4("ueEvent", ueOptions);
+    sendToUE('ueEvent', ueOptions)
     store.setCurrentFeature({
       id: "20",
       name: "预案",
@@ -69,7 +72,8 @@ const handleRightButtonClick = (index) => {
         id: "16",
       },
     };
-    ue4("ueEvent", ueOptions);
+    // ue4("ueEvent", ueOptions);
+    sendToUE('ueEvent', ueOptions)
     activeId.value = 0;
     router.push("/home"); // 页面刷新重定向至首页
     store.initAllData();
@@ -83,7 +87,8 @@ const handleRightButtonClick = (index) => {
         id: activeId.value + "级",
       },
     };
-    ue4("ueEvent", ueOptions);
+    // ue4("ueEvent", ueOptions);
+    sendToUE('ueEvent', ueOptions)
     showWaterChange.value = false;
   }
 };
@@ -100,7 +105,8 @@ const handlePreButton = (index) => {
         name: "预演",
       },
     };
-    ue4("ueEvent", ueOptions);
+    // ue4("ueEvent", ueOptions);
+    sendToUE('ueEvent', ueOptions)
     store.setCurrentFeature({
       id: "19",
       name: "预演",
@@ -185,7 +191,8 @@ watch(
           id: activeId.value + "级",
         },
       };
-      ue4("ueEvent", ueOptions);
+      // ue4("ueEvent", ueOptions);
+      sendToUE('ueEvent', ueOptions)
     }
   },
   {

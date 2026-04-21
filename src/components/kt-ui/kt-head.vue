@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { getImg } from "@/utils/assets";
 import { useStore } from "@/store";
 import { useRouter, useRoute } from "vue-router";
+import { sendToUE } from '@/ktJS/UE'
 const router = useRouter();
 
 const store = useStore();
@@ -108,7 +109,8 @@ function handleOut() {
     type: "user_out",
     data: {},
   };
-  ue4("ueEvent", ueOptions);
+  // ue4("ueEvent", ueOptions);
+  sendToUE('ueEvent', ueOptions)
 }
 const activeWeather = ref(1);
 const isShowWeather = ref(false);
@@ -157,7 +159,8 @@ function handleWeater(item) {
       name: item.name,
     },
   };
-  ue4("ueEvent", ueOptions);
+  // ue4("ueEvent", ueOptions);
+  sendToUE('ueEvent', ueOptions)
 }
 
 function collapsePanel() {
@@ -170,7 +173,8 @@ function handleSceneClick(item) {
     id: item.id,
     name: item.name,
   };
-  ue4('ueEvent', it)
+  // ue4('ueEvent', it)
+  sendToUE('ueEvent', ueOptions)
   console.log('发送了ue信息',);
   store.isOpenRehearsal = false;
   store.setCurrentFeature(it);
@@ -183,7 +187,11 @@ function routerTpNew(params) {
     id: "7",
     name: "预警",
   });
-  ue4('ueEvent', {
+  // ue4('ueEvent', {
+  //   id: "7",
+  //   name: "预警",
+  // })
+  sendToUE('ueEvent', {
     id: "7",
     name: "预警",
   })
@@ -282,7 +290,7 @@ function routerTpNew(params) {
   <!-- 两边导航 -->
   <div
     v-if="store.curPath !== '/home'"
-    class="h-42 top-42 flex justify-between items-center kt-x-center z-[51]"
+    class="h-42 top-42 flex justify-between items-center kt-x-center z-[51] pointer-events-auto"
     :style="{ width: sideNavWidth + 'px' }"
   >
     <div class="flex items-center w-[50%]">
@@ -332,7 +340,7 @@ function routerTpNew(params) {
   ></div>
   <div
     v-if="store.curPath !== '/home'"
-    class="flex justify-around items-center kt-x-center top-105 h-42 z-[20] bg-[url(@/assets/img/head_center_item.webp)] kt-bg-full"
+    class="flex justify-around items-center kt-x-center top-105 h-42 z-[20] bg-[url(@/assets/img/head_center_item.webp)] kt-bg-full pointer-events-auto"
     :style="{ width: middleNavWidth + 'px' }"
   >
     <!-- head-rect.webp -->

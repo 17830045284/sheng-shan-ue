@@ -69,16 +69,14 @@ const store = useStore()
 const showPixelStream = ref(false);
 onMounted(() => {
   // #dev:修改默认路由
-  console.log(1111);
   showPixelStream.value = window.kt_config.usePixelStream;
-  console.log(showPixelStream.value);
 });
 </script>
 
 <template>
   <kt-watermark :enable="false">
     <kt-layout></kt-layout>
-    <kt-pixel-streaming-player v-if="showPixelStream" />
+    <kt-pixel-streaming-player v-if="showPixelStream" class="z-[1]" />
 
     <Transition name="bounce">
       <div

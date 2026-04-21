@@ -2,6 +2,7 @@
 import { getImg } from "@/utils/assets";
 import { useStore } from "@/store";
 import router from "@/router";
+import { sendToUE } from '@/ktJS/UE'
 
 const store = useStore();
 const featureButton = [
@@ -91,7 +92,8 @@ function handleFeature(item) {
       ...item,
     },
   }
-  ue4('ueEvent', ueOptions)
+  // ue4('ueEvent', ueOptions)
+  sendToUE('ueEvent', ueOptions)
   console.log('发送了信息',ueOptions);
   if (item.id === "16") {
     store.setCurrentFeature({

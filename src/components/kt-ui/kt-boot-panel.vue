@@ -1,6 +1,7 @@
 <script setup>
 import { useStore } from '../../store'
 import { getImg } from '@/utils/assets';
+import { sendToUE } from '@/ktJS/UE'
 const props = defineProps({
     curProcess: Array
 })
@@ -120,7 +121,8 @@ watch(
                   name: item.name
                 },
             }
-            ue4('ueEvent', ueOptions)
+            // ue4('ueEvent', ueOptions)
+            sendToUE('ueEvent', ueOptions)
             console.log('ueOptions: ', ueOptions);
         }else { // 结束一轮循环
             console.log('end', store.curBootId, isLoop.value);
@@ -131,7 +133,8 @@ watch(
                     name: store.bootStatus === 1? 'boot' : 'halt'
                 },
             }
-            ue4('ueEvent', ueOptions)
+            // ue4('ueEvent', ueOptions)
+            sendToUE('ueEvent', ueOptions)
             // console.log('aaa', ueOptions);
             }
 
